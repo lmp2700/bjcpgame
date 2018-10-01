@@ -1,5 +1,6 @@
 body {
     background-color: black;
+    font: white;
 }
 
 .main_div {
@@ -9,6 +10,8 @@ body {
 
 .text_box {
     border: 2px solid white;
+    font: white;
+    width: 37em;
 }
 
 .answer1 {
@@ -19,7 +22,7 @@ body {
     border: 5px solid white;
 }
 
-.sidebar {
+.card {
     background-color: green;
 }
 
