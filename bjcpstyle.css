@@ -1,0 +1,32 @@
+body {
+    background-color: black;
+}
+
+.main_div {
+    background: red;
+    display: inline-block;
+}
+
+.text_box {
+    border: 2px solid white;
+}
+
+.answer1 {
+    border: 5px solid white;
+}
+
+.answer2 {
+    border: 5px solid white;
+}
+
+.sidebar {
+    background-color: green;
+}
+
+.score {
+    background-color: white;
+}
+
+.levels {
+    background-color: gray;
+}
