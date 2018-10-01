@@ -243,15 +243,26 @@ other: [{
         color: 'straw',
         abv: 4.6,
         fermentation: 'bottom',
-}],
+    }],
 }
 // ===========================
 // TIMERS HERE  
-// 1 CONTINUOUSLY RUNNING GAME TIMER
-// IDEAL: 10 SECOND TIMER PER TURN - IF TIMER REACHES 0, THE GAME IS OVER
+// 1 CONTINUOUSLY RUNNING GAME TIMER COUNTING UP
+// IDEAL: 10 SECOND TIMER PER TURN - IF TIMER REACHES 0 (COUNTING DOWN), THE GAME IS OVER
+// TIMER RESETS WITH EACH NEW QUESTION
 // ===========================
 
-$('#start').on('click', function(){
+// when you click "start game"
+// 1. the question shows up
+// 2. Two buttons show up (options)
+// 3. the program picks 2 random beers
+// 4. the buttons get text and a class name equal to each beer's abv
+// 5. when you click the button, the console logs which beer they chose
+// 6. a function runs that compares the two beers
+// 7. the result gets appended to the page
+
+$('#start').on('click', function() {
+$('.question_box')​.text('Which beer has a higher ABV?')​;
 const game = {
     level: 1,
     score: 0,
@@ -272,9 +283,10 @@ const game = {
 }
 game.start();
 })
+
 // ===========================
 // GAME LOGIC HERE
-// LOOP THROUGH AN ARRAY OF QUESTIONS
+// LOOP THROUGH AN ARRAY OF BEER
 // Level 1 is which beer has the higher ABV
 // IDEAL: HAVE 2 QUESTIONS FOR LEVEL 1
 // Level 2 is to pick the correct color of beer
@@ -282,21 +294,20 @@ game.start();
 // ===========================
 
 // have a question show up on index.html with 2 buttons for random beer options
-// $(".question_box")​.text("Which beer has a higher ABV?")​; - CODE IS RETURNING A SYNTAX ERROR. REMOVING CODE AROUND IT DID NOT FIX
-// JUST UPDATED HTML - NEED TO UPDATE DIV QUESTION_BOX WITH SUBSEQUENT LEVELS
 
 // beers need to be put into an array so the function can loop through an array
 const newArray = Object.entries(beer);
-console.log(newArray)
+// console.log(newArray)
 
 // when a choice is clicked, compare the two beers. when the beer is selected correctly, push it into a used array
-abvQuestion = (beer1, beer2, selection) => {
-    if(beer1 > beer2 && selection === beer1) {
-        return('beer me')
-    } else {
-        return('keep drinking')
-    }
-}
+// abvQuestion = (abv1, abv2, selection) => {
+//     for(let i = 0; i < newArray.length; i++)
+//     if(abv1 > abv2 && selection === abv1) {
+//         return('beer me')
+//     } else {
+//         return('keep drinking')
+//     }
+// }
 
 // append the choices to the index.html buttons and add a function for the beers and the selection (beer 1, beer 2, selection)
 
