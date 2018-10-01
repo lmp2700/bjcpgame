@@ -4,7 +4,7 @@
 // IDEAL: add BJCP beers and origins, consider the varying colors, ABV and IBUs for all beers
 // ===========================
 const beer = {
-    belgian: [{
+belgian: [{
         name: 'Gueuze',
         color: 'straw',
         abv: 5,
@@ -245,34 +245,33 @@ other: [{
         fermentation: 'bottom',
 }],
 }
-const newArray = Object.entries(beer);
-
 // ===========================
 // TIMERS HERE  
 // 1 CONTINUOUSLY RUNNING GAME TIMER
 // IDEAL: 10 SECOND TIMER PER TURN - IF TIMER REACHES 0, THE GAME IS OVER
 // ===========================
 
-// const game = {
-//     level: 1,
-//     score: 0,
-//     timer: 0,
-//     turnTimer: 0,
-//     start() {
-//         const gameTimer = setInterval (() => {
-//             this.timer++
-//             this.turnTimer++
-//                 if(this.turnTimer === 10) {
-//                 alert('game over')
-//                 clearInterval(turnTimer)
-//                 clearInterval(timer)
-//                 // page is timing out with turn timer only
-//             }
-//         }, 1000);
-//     }
-// }
-// game.start();
-
+$('#start').on('click', function(){
+const game = {
+    level: 1,
+    score: 0,
+    timer: 0,
+    turnTimer: 0,
+    start() {
+        const gameTimer = setInterval (() => {
+            this.timer++
+            this.turnTimer++
+                if(this.turnTimer === 10) {
+                alert('game over')
+                clearInterval(turnTimer)
+                clearInterval(timer)
+                // page is timing out with turn timer only
+            }
+        }, 1000);
+    }
+}
+game.start();
+})
 // ===========================
 // GAME LOGIC HERE
 // LOOP THROUGH AN ARRAY OF QUESTIONS
@@ -284,35 +283,33 @@ const newArray = Object.entries(beer);
 
 // have a question show up on index.html with 2 buttons for random beer options
 // $(".question_box")​.text("Which beer has a higher ABV?")​; - CODE IS RETURNING A SYNTAX ERROR. REMOVING CODE AROUND IT DID NOT FIX
-// JUST UPDATED HTML - UPDATE DIV QUESTION_BOX WITH SUBSEQUENT LEVELS
+// JUST UPDATED HTML - NEED TO UPDATE DIV QUESTION_BOX WITH SUBSEQUENT LEVELS
 
-// beers need to be put into an array so the function of  can loop through an array
+// beers need to be put into an array so the function can loop through an array
+const newArray = Object.entries(beer);
+console.log(newArray)
 
+// when a choice is clicked, compare the two beers. when the beer is selected correctly, push it into a used array
+abvQuestion = (beer1, beer2, selection) => {
+    if(beer1 > beer2 && selection === beer1) {
+        return('beer me')
+    } else {
+        return('keep drinking')
+    }
+}
 
-// myArray = new Array();
-// $.each(Beer, function(key, value) { 
-//   myArray.push(value);
-// });
-// console.log(myArray)
-
-// when a choice is clicked, compare the two beers. when the beer is selected correctly, push it into a used array?
 // append the choices to the index.html buttons and add a function for the beers and the selection (beer 1, beer 2, selection)
+
+
+
 // reset the beer array at the end of level 1
+
+
+
 
 // abvQuestions = ["Which beer has a higher ABV?"]; // append this question to the page for the whole of level 1
             // for/if loop. loop through the array and pick a random question. Loop through the beer object and pick 2 random 
             // different beers. The user has to pick which beer has a higher ABV (option 1 or option 2)
-
-
-// abvQuestion = (beer1, beer2, selection) => {
-//     if(beer1 > beer2 || selection === beer1) {
-//         return('beer me')
-//     } else {
-//         return('keep drinking')
-//     }
-// }
-
-
 
 
 // ===========================

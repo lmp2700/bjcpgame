@@ -16,6 +16,12 @@ body {
     width: 25em;
 }
 
+.btn btn-primary {
+    background-color: transparent;
+    color: white;
+    border: 1px gray;
+}
+
 .answer1 {
     border: 5px solid white;
 }
