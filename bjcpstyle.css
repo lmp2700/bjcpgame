@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    font: white;
+    font-family: 'Vollkorn', serif;
 }
 
 .main_div {
@@ -8,10 +8,12 @@ body {
     display: inline-block;
 }
 
-.text_box {
+.question_box {
     border: 2px solid white;
-    font: white;
-    width: 37em;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    width: 25em;
 }
 
 .answer1 {
