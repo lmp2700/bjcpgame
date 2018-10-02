@@ -10,33 +10,31 @@
     <title>BJCP Game</title>
 </head>
 <body>
-
-    <div class="row">
-        <div class="col-8"><img src="images/beerfoam.gif"></div>
-        <div class="col-4">
-                <div class="card">
-                        <div class="card-body">
-                                <div class="card" style="width: 8rem;">
-                                        <ul class="list-group list-group-flush">
-                                          <li class="list-group-item" id="score">Score: 0</li>
-                                          <li class="list-group-item" id="level">Level: 0</li>
-                                          <li class="list-group-item" id="game-timer">0</li>
-                                        </ul>
-                                    </div>
-                            </div>
-                        </div>
-                       <p class="card-text">
-                                <button class="btn btn-primary" id="start">Start</button>
-                                <button class="btn btn-primary" id="reset">Reset</button>
-                                <button class="btn btn-primary" id="rules">Rules</button>
-                        </p>
-                    </div>
+    
+    <div class="container">
+            <div class="row">
+              <div class="col-sm-6">
+                    <div class="col-8"><img src="images/beerfoam.gif"></div>
+                    <div class="question_box"><h4 class="question">Question?</h4></div>
+                    <div class="row-2" id="options">
+              </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card" style="width: 8rem;">
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item" id="score">Score: 0</li>
+                              <li class="list-group-item" id="level">Level: 0</li>
+                              <li class="list-group-item" id="game-timer">0</li>
+                            </ul>
                 </div>
-        </div>
-    </div>
-    <div class="question_box"><h4 class="question">Question?</h4></div>
-    <div class="row-2" id="options">
-    </div>  
+            <div class="col-sm-6" id="numbers">
+                            <button class="btn btn-outline-light" id="start">Start</button>
+                            <button class="btn btn-outline-light" id="reset">Reset</button>
+                            <br>
+                            <button class="btn btn-outline-light" id="rules">Rules</button>
+            </div>
+          </div>
+    
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

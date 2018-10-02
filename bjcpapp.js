@@ -256,8 +256,6 @@ other: [{
 //    and answer buttons and show start button (harder)
 // 4. Have a correct answer (A or B) lead to showing a text that says "You win" or "You lose,"
 // ONCE THE START BUTTON IS CLICKED
-// 3. the program picks 2 random beers
-// 4. the buttons get text and a class name equal to each beer's abv
 // 5. when you click the button, the console logs which beer they chose
 // 6. a function runs that compares the two beers
 // 7. the result gets appended to the page
@@ -270,7 +268,7 @@ const game = {
         const gameTimer = setInterval (() => {
             this.timer++
             this.levelTimer-=
-            $('.game-timer').text('Time Left: ' + ($('this.leveltimer'))); // timer not showing up on the page yet
+            $('.game-timer').text('Time Left: ' + ($('this.leveltimer'))); // timer not showing up on the page
                 if(this.levelTimer === 200) {
                 alert('game over')
                 clearInterval(gameTimer)
@@ -288,36 +286,27 @@ for(key in beer) {
 }
 console.log(beersArray)
 
-let abv1 = console.log(beersArray.splice(Math.floor(Math.random() * beersArray.length), 1)[0])
-let abv2 = console.log(beersArray.splice(Math.floor(Math.random() * beersArray.length), 1)[0])
-
-for(let i = 0; i < beersArray[i].abv.length; i++) {
-    if(abv1 > abv2 && selection === abv1) {
-        alert('beer me')
-    } else {
-        alert('keep drinking')
-    }  
-}
-
 $('#start').on('click', function() {
     //turn off the start button once the game has started
     game.start();
     $('#start').off().hide();
     $('.question_box').text('Which ABV is higher?');
-    $('.row-2').append($('<input type="button" value="test" id="option1">'));
-    $('.row-2').append($('<input type="button" value="test" id="option2">'));
-    
-
+    $('.row-2').append($('<input type="button" value="test" class="btn btn-outline-light" aria-pressed="true" id="option1">'));
+    $('.row-2').append($('<input type="button" value="test" class="btn btn-outline-light" aria-pressed="true" id="option2">'));
+    let abv1 = beersArray.splice(Math.floor(Math.random() * beersArray.length), 1)[0] 
+    let abv2 = beersArray.splice(Math.floor(Math.random() * beersArray.length), 1)[0]
+    let selection;
+    $('#option1').val(abv1.name)
+    $('#option2').val(abv2.name)
+    for(let i = 0; i < beersArray.length; i++) {
+    if(abv1 > abv2 && selection === abv1) {
+        alert('beer me')
+    } else {
+        alert('keep drinking')
+        break
+        } 
+    }
 })
-
-
-// abvRandom = (abv1, abv2, selection) => {
-//     if(abv1 > abv2 && selection === abv1) {
-//         alert('beer me')
-//     } else {
-//         alert('keep drinking')
-//     }
-// }
 console.log('rando')
 
 // ===========================
