@@ -252,17 +252,19 @@ other: [{
 // TIMER RESETS WITH EACH NEW QUESTION
 // ===========================
 
-// when you click "start game"
-// 1. the question shows up
+
+// 1. Intro screen  - (Rules or intro message) and Start Button
+// 2. Clicking start button -> -hides start button, -shows reset button, -starts timer, -  shows question text div and answer buttons
+// 3. Allow user to either click Reset, A or B button -> reset could refresh page (easiest) or stop timer, hide timer, hide question, 
+//    and answer buttons,  and show start button (harder)
+// 4. Have a correct answer (A or B) lead to showing a text that says "You win" or "You lose,"
+// ONCE THE START BUTTON IS CLICKED
 // 2. Two buttons show up (options)
 // 3. the program picks 2 random beers
 // 4. the buttons get text and a class name equal to each beer's abv
 // 5. when you click the button, the console logs which beer they chose
 // 6. a function runs that compares the two beers
 // 7. the result gets appended to the page
-
-$('#start').on('click', function() {
-$('.question_box')​.text('Which beer has a higher ABV?')​;
 const game = {
     level: 1,
     score: 0,
@@ -272,16 +274,24 @@ const game = {
         const gameTimer = setInterval (() => {
             this.timer++
             this.turnTimer++
-                if(this.turnTimer === 10) {
+                if(this.turnTimer === 200) {
                 alert('game over')
-                clearInterval(turnTimer)
-                clearInterval(timer)
+                clearInterval(gameTimer)
                 // page is timing out with turn timer only
             }
         }, 1000);
     }
 }
-game.start();
+$("#submit1 submit2").click(function(){
+    $("#options").toggle();
+});
+
+$('#start').on('click', function() {
+    //turn off the start button once the game has started
+    game.start();
+    $('#start').off() 
+    $('.question_box').text('Which ABV is higher?');
+
 })
 
 // ===========================
@@ -296,10 +306,11 @@ game.start();
 // have a question show up on index.html with 2 buttons for random beer options
 
 // beers need to be put into an array so the function can loop through an array
-const newArray = Object.entries(beer);
-// console.log(newArray)
+// const newArray = Object.entries(beer);
+// abvQuestions = ["Which beer has a higher ABV?"]; 
+// // console.log(newArray)
 
-// when a choice is clicked, compare the two beers. when the beer is selected correctly, push it into a used array
+// // when a choice is clicked, compare the two beers. when the beer is selected correctly, push it into a used array
 // abvQuestion = (abv1, abv2, selection) => {
 //     for(let i = 0; i < newArray.length; i++)
 //     if(abv1 > abv2 && selection === abv1) {
@@ -318,7 +329,7 @@ const newArray = Object.entries(beer);
 
 
 
-// abvQuestions = ["Which beer has a higher ABV?"]; // append this question to the page for the whole of level 1
+// append this question to the page for the whole of level 1
             // for/if loop. loop through the array and pick a random question. Loop through the beer object and pick 2 random 
             // different beers. The user has to pick which beer has a higher ABV (option 1 or option 2)
 
