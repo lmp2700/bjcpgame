@@ -259,7 +259,6 @@ other: [{
 //    and answer buttons,  and show start button (harder)
 // 4. Have a correct answer (A or B) lead to showing a text that says "You win" or "You lose,"
 // ONCE THE START BUTTON IS CLICKED
-// 2. Two buttons show up (options)
 // 3. the program picks 2 random beers
 // 4. the buttons get text and a class name equal to each beer's abv
 // 5. when you click the button, the console logs which beer they chose
@@ -269,12 +268,12 @@ const game = {
     level: 1,
     score: 0,
     timer: 0,
-    turnTimer: 0,
+    levelTimer: 0,
     start() {
         const gameTimer = setInterval (() => {
             this.timer++
-            this.turnTimer++
-                if(this.turnTimer === 200) {
+            this.levelTimer++
+                if(this.levelTimer === 200) {
                 alert('game over')
                 clearInterval(gameTimer)
                 // page is timing out with turn timer only
@@ -282,16 +281,14 @@ const game = {
         }, 1000);
     }
 }
-$("#submit1 submit2").click(function(){
-    $("#options").toggle();
-});
 
 $('#start').on('click', function() {
     //turn off the start button once the game has started
     game.start();
     $('#start').off() 
     $('.question_box').text('Which ABV is higher?');
-
+    $('.row-2').append($('<input type="button" value="test">'));
+    $('.row-2').append($('<input type="button" value="test">'));
 })
 
 // ===========================
