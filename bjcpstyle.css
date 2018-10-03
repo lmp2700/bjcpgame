@@ -5,6 +5,7 @@ dark color: #c17900 */
 body {
     background: #000000;
     font-family: 'Vollkorn', serif;
+    position: fixed center;
 }
 
 .container {
@@ -18,9 +19,10 @@ body {
 }
 
 #question_box {
-    margin: 8em -10em;
+    margin: 5em -10em;
     border: #f9a825 1px solid;
-    padding: 5px;
+    padding: 0px;
+    position: fixed;
 }
 
 .question_box {
@@ -36,24 +38,29 @@ body {
     text-align: center;
     margin: 20em 0 5em;
     float: left;
-    width: 25%;
+    /* width: 25%;
+    height: 50%; */
 }
 
 #numbers {
     margin: 17em;
+    border: #f9a825 1px solid;
+    padding: 0px;
 }
 
 #answer {
+    background-color: #c17900;
     text-align: center;
-    color: #c17900;
-    margin: -10em 20em 20em 10em;
+    color: #FFFFFF;
+    margin: 12em 25em 20em 0em;
+    position: fixed;
 }
 
 #gamerules {
     text-align: center;
-    color: #f9a825;
-    margin: -10em 10em 20em 0;
-    background-color: white;
+    color: #FFFFFF;
+    margin: 10em 8em 20em 12em;
+    background-color:#c17900;
     position: fixed center;
 }
 

@@ -1,15 +1,5 @@
-// have a question box that will rotate questions in and out
-// create a timer for each turn
-// create 2 categories for each answer
-// have a points board for 1 player and 2 player
-// utilize bootstrap
-// utilize velocity for the categories. different velocity options if the answer is right vs wrong
-// utilize velocity for the question box
-// game reset button 
-
 // ===========================
 // OBJECTS HERE
-// used Cicerone beers & categorization
 // IDEAL: add BJCP beers and origins, consider the varying colors, ABV and IBUs for all beers
 // ===========================
 console.log('so much beer')
@@ -259,25 +249,42 @@ other: [{
 } 
 // ===========================
 // TIMERS & GAME LOGIC HERE  
-// 1 CONTINUOUSLY RUNNING GAME TIMER COUNTING UP
-// TIMER RESETS WITH EACH NEW LEVEL - 2 MIN PER LEVEL
 // Level 1 is which beer has the higher ABV
-// Level 2 is to pick the correct color of beer
-// Level 3 is to pick the correct fermentation 
 // IDEAL: HAVE 2 QUESTIONS FOR LEVEL 1 - HIGHER AND LOWER ABV
 // IDEAL: 10 SECOND TIMER PER TURN - IF TIMER REACHES 0 (COUNTING DOWN), THE GAME IS OVER
-// IDEAL: EASY, INTERMEDIATE AND ADVANCED. 90 SEC PER LEVEL OF INTERMEDIATE. 45 SEC FOR ADVANCED
+// IDEAL: EASY, INTERMEDIATE AND ADVANCED OPTIONS. 90 SEC PER LEVEL OF INTERMEDIATE. 45 SEC FOR ADVANCED
 // ============================
+const analyzeGuess =(e) => {
+  let userChoice = $(e.target).attr('id')
+  let otherChoice = {}
+  if(userChoice === "option1"){
+    userChoice = beer1
+    otherChoice = beer2
+    console.log(userChoice.name)
+  } else {
+    userChoice = beer2
+    otherChoice = beer1
+    console.log(userChoice.name)
+  }
+  if(userChoice.abv > otherChoice.abv){
+        points++
+        $('#score').text(points)
+        $('#option1, #option2').off()
+        $('#answer').show()
+        $('.option_response').text(`You chose ${userChoice.name}. You're such a beer nerd!`);
+    } else {
+        $('#option1, #option2').off()
+        $('#answer').show()
+        $('.option_response').text('Keep drinking') 
+    }
+}
 const game = {
-    timer: 0,
     levelTimer: 0,
     start() {
         const gameTimer = setInterval (() => {
-            this.timer++
             this.levelTimer++
             $('#game-timer').text('Timer: ' + this.levelTimer);
-            // console.log(this.levelTimer) // returning NaN with -=
-                if(this.levelTimer === 120) {
+                if(this.levelTimer === 60) {
                 alert('You\'re cut off')
                 clearInterval(gameTimer)
             } 
@@ -286,17 +293,21 @@ const game = {
 } 
 // beers need to be put into an array so the function can loop through an array
 const beersArray = []
-for(key in beer) {
-    let ciceroneList = beer[key]
-    for(let i = 0; i < ciceroneList.length; i++) {
-        beersArray.push(ciceroneList[i])
-    }
-}
-
 let beer1 = '';
 let beer2 = '';
 points = 0;
 level = 1;
+turnTimer = 10;
+for(key in beer) {
+    let ciceroneList = beer[key]
+    for(let i = 0; i < ciceroneList.length; i++) {
+        beersArray.push(ciceroneList[i])
+        if(ciceroneList.length === 0){
+          console.log('you\'ve reached the end of the beer list')
+          alert("You're a beer connoisseur");
+        }
+    }
+}
 $('#start').on('click', function() {
     game.start();
     $('#start').off()
@@ -309,50 +320,30 @@ $('#start').on('click', function() {
     $('#option1').val(beer1.name)
     $('#option2').val(beer2.name)
 
-    $('#option1, #option2').on('click', function(e) {
-      let userChoice = $(e.target).attr('id')
-      let otherChoice = {}
-      if(userChoice === "option1"){
-        userChoice = beer1
-        otherChoice = beer2
-        console.log(userChoice.name)
-      } else {
-        userChoice = beer2
-        otherChoice = beer1
-        console.log(userChoice.name)
-      }
-      if(userChoice.abv > otherChoice.abv){
-            points++
-            $('#score').text(points)
-            $('#option1, #option2').off()
-            $('#answer').show()
-      $('.option_response').text(`You chose ${userChoice.name}. You are correct!`); // New beers populate in
-        } else {
-            $('.option_response').text('Try again') // New beers populate in and you get to try again 
-        }
+    $('#option1, #option2').on('click', analyzeGuess)
+
+    $('#beerme').on('click', function () {
+      $('#option1, #option2').on('click', analyzeGuess)
+      $('#answer').hide()
+      beer1 = beersArray.splice(Math.floor(Math.random() * beersArray.length), 1)[0];
+      beer2 = beersArray.splice(Math.floor(Math.random() * beersArray.length), 1)[0];
+      $('#option1').val(beer1.name)
+      $('#option2').val(beer2.name)
     })
-    
-})
-// when resetting use options.empty()
-$('#beerme').on('click', function () {
-  $('#answer').hide()
 
-})
-
-$('#cutoff').on('click', function () {
-  $('#answer').hide()
-
-})
-
-$('#rulesbutton').on('click', function () {
-    $('#gamerules').show()
-    // need to add in a hide function when the div or outside the div is clicked
-})
-
-$('#cutoff').on('click', function() {
+  $('#cutoff').on('click', function() {
     $('#answer').hide()
-    document.location.reload()
+    clearInterval(gameTimer) // timer not stopping
+    $('#option1').val(beer1.name).empty()
+    $('#option2').val(beer2.name).empty()
   })
+  
+});
+
+$('#rulesbutton').on('click', function(e) {
+    $('#gamerules').show()
+    e.stopPropagation(); // not hiding the window when clicking anywhere on the page  
+})
 
 $('#reset').on('click', function() {
   document.location.reload()
