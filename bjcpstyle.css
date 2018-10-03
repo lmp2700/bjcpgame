@@ -1,46 +1,62 @@
+/* primary color: #f9a825
+light color: #ffd95a
+dark color: #c17900 */
+
 body {
-    background-color: black;
+    background: #000000;
     font-family: 'Vollkorn', serif;
 }
 
 .container {
-    background: red;
-    display: inline-block;
-    margin: 5em;
+    background: #ffd95a url('images/beerfoam.gif') fixed;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: fixed center;
+    position: fixed center;
+}
+
+#question_box {
+    margin: 8em -10em;
+    border: #f9a825 1px solid;
+    padding: 5px;
 }
 
 .question_box {
-    border: 2px solid white;
-    color: white;
-    font-size: 24px;
+    margin: 10em;
+}
+
+#timerdiv {
+    display: inline-block;    
+}
+
+#score-time {
+    display: inline-block;
     text-align: center;
-    width: 25em;
-    margin: 0 0 0 15px;
+    margin: 20em 0 5em;
+    float: left;
+    width: 25%;
 }
 
-#option1 {
-    margin: 0 0 0 15px;
+#numbers {
+    margin: 17em;
 }
 
-.btn btn-primary {
-    background-color: transparent;
-    color: white;
-    border: 1px gray;
+#answer {
+    text-align: center;
+    color: #c17900;
+    margin: -10em 20em 20em 10em;
+}
+
+#gamerules {
+    text-align: center;
+    color: #f9a825;
+    margin: -10em 10em 20em 0;
+    background-color: white;
+    position: fixed center;
 }
 
 .btn btn-outline-light {
-
-}
-
-.card {
-    background-color: green;
-    margin: 100px 0 0 45px;
-}
-
-.score {
-    background-color: white;
-}
-
-.levels {
-    background-color: gray;
+    border: #f9a825 1px solid;
 }
