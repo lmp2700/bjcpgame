@@ -9,17 +9,18 @@ body {
 }
 
 .container {
-    background: #ffd95a url('images/beerfoam.gif') fixed;
+    background: #000000 url('images/beerfoam.gif') fixed;
     background-size: cover;
-    height: 100%;
+    height: auto;
     width: 100%;
     display: flex;
     align-items: fixed center;
     position: fixed center;
+    color: #ffd95a;
 }
 
 #question_box {
-    margin: 5em -10em;
+    margin: 5em -15em;
     border: #f9a825 1px solid;
     padding: 0px;
     position: fixed;
@@ -27,25 +28,30 @@ body {
 
 .question_box {
     margin: 10em;
+    color: #ffd95a;
 }
 
 #timerdiv {
-    display: inline-block;    
+    display: left;
+    color: #ffd95a;    
 }
 
 #score-time {
     display: inline-block;
     text-align: center;
-    margin: 20em 0 5em;
-    float: left;
+    margin: 40em 0 10em;
+    /* float: left; */
+    color: #ffd95a;
     /* width: 25%;
     height: 50%; */
+    position: fixed left;
 }
 
 #numbers {
     margin: 17em;
     border: #f9a825 1px solid;
     padding: 0px;
+    color: #ffd95a;
 }
 
 #answer {

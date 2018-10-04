@@ -268,7 +268,7 @@ const analyzeGuess =(e) => {
   }
   if(userChoice.abv > otherChoice.abv){
         points++
-        $('#score').text(points)
+        $('#score').text('Score: ' + points)
         $('#option1, #option2').off()
         $('#answer').show()
         $('.option_response').text(`You chose ${userChoice.name}. You're such a beer nerd!`);
@@ -284,14 +284,20 @@ const game = {
         const gameTimer = setInterval (() => {
             this.levelTimer++
             $('#game-timer').text('Timer: ' + this.levelTimer);
-                if(this.levelTimer === 60) {
+                if(this.levelTimer === 120) {
                 alert('You\'re cut off')
                 clearInterval(gameTimer)
             } 
-        }, 1000); 
-    } 
-} 
-// beers need to be put into an array so the function can loop through an array
+        }, 1000);
+    // stop() {
+    //   const gameTimer = stopInterval(() => {
+    //     this.leveltimer
+    //     $('#cutoff').on('click')
+    //     clearInterval(gameTimer)
+    //   }
+    // }
+  }
+}
 const beersArray = []
 let beer1 = '';
 let beer2 = '';
@@ -302,10 +308,7 @@ for(key in beer) {
     let ciceroneList = beer[key]
     for(let i = 0; i < ciceroneList.length; i++) {
         beersArray.push(ciceroneList[i])
-        if(ciceroneList.length === 0){
-          console.log('you\'ve reached the end of the beer list')
-          alert("You're a beer connoisseur");
-        }
+        // if(beersArray.length === 0)
     }
 }
 $('#start').on('click', function() {
@@ -319,7 +322,7 @@ $('#start').on('click', function() {
     beer2 = beersArray.splice(Math.floor(Math.random() * beersArray.length), 1)[0];
     $('#option1').val(beer1.name)
     $('#option2').val(beer2.name)
-
+    
     $('#option1, #option2').on('click', analyzeGuess)
 
     $('#beerme').on('click', function () {
@@ -330,25 +333,24 @@ $('#start').on('click', function() {
       $('#option1').val(beer1.name)
       $('#option2').val(beer2.name)
     })
-
   $('#cutoff').on('click', function() {
     $('#answer').hide()
-    clearInterval(gameTimer) // timer not stopping
     $('#option1').val(beer1.name).empty()
     $('#option2').val(beer2.name).empty()
-  })
-  
+  })  
 });
 
-$('#rulesbutton').on('click', function(e) {
+$('#rulesbutton').on('click', function() {
     $('#gamerules').show()
-    e.stopPropagation(); // not hiding the window when clicking anywhere on the page  
+})
+
+$('#ackrules').on('click', function() {
+  $('#gamerules').hide()
 })
 
 $('#reset').on('click', function() {
   document.location.reload()
 })
-
 console.log('the end')
 
 // append the choices to the index.html buttons and add a function for the beers and the selection (beer 1, beer 2, selection)
