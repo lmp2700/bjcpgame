@@ -5,10 +5,8 @@
 console.log('so much beer')
 $('#answer').hide();
 $('#gamerules').hide();
-$('#next-level').show();
-// $(document).ready(function() {
-//   $("#my_audio").get(0).play();
-// })
+$('#next-level').hide();
+$('#timeout').hide();
 const beer = {
 belgian: [{
         name: 'Gueuze',
@@ -250,7 +248,7 @@ other: [{
         abv: 4.6,
         fermentation: 'bottom',
     }],
-} 
+};
 // ===========================
 // TIMERS & GAME LOGIC HERE  
 // Level 1 is which beer has the higher ABV
@@ -258,7 +256,7 @@ other: [{
 // IDEAL: 10 SECOND TIMER PER TURN - IF TIMER REACHES 0 (COUNTING DOWN), THE GAME IS OVER
 // IDEAL: EASY, INTERMEDIATE AND ADVANCED OPTIONS. 90 SEC PER LEVEL OF INTERMEDIATE. 45 SEC FOR ADVANCED
 // ============================
-// const audio = new Audio('sounds/beerpour.mp3');
+const audio = new Audio('sounds/beerpour.mp3');
 const analyzeGuess =(e) => {
   let userChoice = $(e.target).attr('id')
   let otherChoice = {}
@@ -282,7 +280,7 @@ const analyzeGuess =(e) => {
         $('#answer').show()
         $('.option_response').text('Keep drinking') 
     }
-}
+};
 const game = {
     levelTimer: 0,
     start() {
@@ -290,10 +288,11 @@ const game = {
             this.levelTimer++
             $('#game-timer').text('Timer: ' + this.levelTimer);
                 if(this.levelTimer === 120) {
-                alert('You\'re cut off')
+                $('#timeout').show();
                 clearInterval(gameTimer)
             } 
         }, 1000);
+    // CODE BELOW IS NOT WORKING
     // stop() {
     //   const gameTimer = stopInterval(() => {
     //     this.leveltimer
@@ -302,7 +301,7 @@ const game = {
     //   }
     // }
   }
-}
+};
 const beersArray = []
 let beer1 = '';
 let beer2 = '';
@@ -317,6 +316,7 @@ for(key in beer) {
     }
 $('#start').on('click', function() {
     game.start();
+    audio.play()
     $('#start').off()
     $('#gamerules').hide();
     $('.question_box').text('Which ABV is higher?');
@@ -349,15 +349,23 @@ $('#start').on('click', function() {
 
 $('#rulesbutton').on('click', function() {
     $('#gamerules').show()
-})
+});
 
 $('#ackrules').on('click', function() {
   $('#gamerules').hide()
-})
+});
+
+$('#newlevel').on('click', function () {
+  $('#next-level').hide();
+});
+
+$('#timeouttab').on('click', function() {
+  $('#timeout').hide();
+});
 
 $('#reset').on('click', function() {
   document.location.reload()
-})
+});
 console.log('the end')
 
 // ===========================

@@ -61,6 +61,14 @@ body {
     position: fixed center;
 }
 
+#timeout {
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0 0 0 20em;
+    background-color:#c17900;
+    position: fixed center;
+}
+
 #score-time {
     display: inline-block;
     padding: 0px;
