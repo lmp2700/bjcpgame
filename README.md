@@ -1,5 +1,5 @@
 BJCP STYLE MEMORY GAME
-
+![alt text](wireframe.png)
 ===============================
 GAME PURPOSE: 
 The purpose of this game is to assist with the BJCP standards for Cicerone (or just for fun!). 
