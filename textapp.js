@@ -5,7 +5,7 @@
 console.log('so much beer')
 $('#answer').hide();
 $('#gamerules').hide();
-$('#next-level').show();
+$('#next-level').hide();
 // $(document).ready(function() {
 //   $("#my_audio").get(0).play();
 // })
@@ -331,7 +331,7 @@ $('#start').on('click', function() {
       $('#option1, #option2').on('click', analyzeGuess)
       $('#answer').hide()
       if(beersArray.length < 2) {
-        $('#next-level').show()
+        $('#next-level').show().text(`You ended Level 1 with ${this.points}. You saucy minx, you.`)
       } else {
       beer1 = beersArray.splice(Math.floor(Math.random() * beersArray.length), 1)[0];
       beer2 = beersArray.splice(Math.floor(Math.random() * beersArray.length), 1)[0];
@@ -343,7 +343,6 @@ $('#start').on('click', function() {
     $('#answer').hide()
     $('#option1').val(beer1.name).empty()
     $('#option2').val(beer2.name).empty()
-    console.log(this.gameTimer)
   })  
 });
 
