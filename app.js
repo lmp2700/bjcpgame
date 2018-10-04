@@ -5,6 +5,10 @@
 console.log('so much beer')
 $('#answer').hide();
 $('#gamerules').hide();
+$('#nextlevel').show()
+// $(document).ready(function() {
+//   $("#my_audio").get(0).play();
+// })
 const beer = {
 belgian: [{
         name: 'Gueuze',
@@ -254,6 +258,7 @@ other: [{
 // IDEAL: 10 SECOND TIMER PER TURN - IF TIMER REACHES 0 (COUNTING DOWN), THE GAME IS OVER
 // IDEAL: EASY, INTERMEDIATE AND ADVANCED OPTIONS. 90 SEC PER LEVEL OF INTERMEDIATE. 45 SEC FOR ADVANCED
 // ============================
+// const audio = new Audio('sounds/beerpour.mp3');
 const analyzeGuess =(e) => {
   let userChoice = $(e.target).attr('id')
   let otherChoice = {}
@@ -308,9 +313,8 @@ for(key in beer) {
     let ciceroneList = beer[key]
     for(let i = 0; i < ciceroneList.length; i++) {
         beersArray.push(ciceroneList[i])
-        // if(beersArray.length === 0)
+        }
     }
-}
 $('#start').on('click', function() {
     game.start();
     $('#start').off()
@@ -322,21 +326,24 @@ $('#start').on('click', function() {
     beer2 = beersArray.splice(Math.floor(Math.random() * beersArray.length), 1)[0];
     $('#option1').val(beer1.name)
     $('#option2').val(beer2.name)
-    
     $('#option1, #option2').on('click', analyzeGuess)
-
     $('#beerme').on('click', function () {
       $('#option1, #option2').on('click', analyzeGuess)
       $('#answer').hide()
+      if(beersArray.length < 2) {
+        $('#nextlevel').show().text(`You ended Level 1 with ${this.points}. You saucy minx, you.`)
+      } else {
       beer1 = beersArray.splice(Math.floor(Math.random() * beersArray.length), 1)[0];
       beer2 = beersArray.splice(Math.floor(Math.random() * beersArray.length), 1)[0];
       $('#option1').val(beer1.name)
       $('#option2').val(beer2.name)
+      }
     })
   $('#cutoff').on('click', function() {
     $('#answer').hide()
     $('#option1').val(beer1.name).empty()
     $('#option2').val(beer2.name).empty()
+    console.log(this.gameTimer)
   })  
 });
 
@@ -352,9 +359,6 @@ $('#reset').on('click', function() {
   document.location.reload()
 })
 console.log('the end')
-
-// append the choices to the index.html buttons and add a function for the beers and the selection (beer 1, beer 2, selection)
-// reset the beer array at the end of level 1
 
 // ===========================
 // ADDITIONAL LEVELS HERE

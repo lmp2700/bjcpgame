@@ -54,6 +54,10 @@ body {
     color: #ffd95a;
 }
 
+#numbers2 {
+    margin: 17em;
+}
+
 #answer {
     background-color: #c17900;
     text-align: center;
@@ -63,6 +67,14 @@ body {
 }
 
 #gamerules {
+    text-align: center;
+    color: #FFFFFF;
+    margin: 10em 8em 20em 12em;
+    background-color:#c17900;
+    position: fixed center;
+}
+
+#nextlevel {
     text-align: center;
     color: #FFFFFF;
     margin: 10em 8em 20em 12em;

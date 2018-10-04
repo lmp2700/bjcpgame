@@ -11,9 +11,6 @@ If the beer is picked correctly, then the player will score a point. The player 
 If the beer is picked incorrectly, the player will be given a chance to start over to continue player. No point will be scored.
 
 If the player completes all the questions correctly, they can move on to the next level.
-
-===============================
-
 ===============================
 GAME LEVELS:
 ABV comparison of lowest possible ABV% <-- minimum viable product, lvl 1
@@ -21,8 +18,6 @@ Beer Color (12 colors) <-- lvl 2
 Beer Style (34 styles) <-- lvl 3
 Beer Fermentation (6 ways) <--  lvl 4
 Origin (6 origin locations) <-- lvl 5
-===============================
-
 ===============================
 CODING OBJECTIVES
 start game button
@@ -36,6 +31,4 @@ utilize bootstrap
 utilize velocity for the categories. different velocity options if the answer is right vs wrong
 utilize velocity for the question box
 game reset button
-===============================
-
 ===============================
